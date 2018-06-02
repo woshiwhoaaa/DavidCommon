@@ -41,9 +41,9 @@ namespace DavidCommon
         /// <param name="savepath">保存路径</param>
         /// <param name="widthsize">宽</param>
         /// <param name="heightsize">高</param>
-        /// <param name="type">0://同时大于等于宽高,1://同时小于等于宽高,2://同时等于宽高,3://大于等于宽，小于等于高,4://小于等于宽，大于等于高</param>
+        /// <param name="type">0:直接下载,1://同时小于等于宽高,2://同时等于宽高,3://大于等于宽，小于等于高,4://小于等于宽，大于等于高,5://同时大于等于宽高</param>
         /// <returns></returns>
-        public static bool GetImgSize(string url, string savepath, int widthsize = 0, int heightsize = 0, int type = 0)
+        public static bool SaveImages(string url, string savepath, int widthsize = 0, int heightsize = 0, int type = 0)
         {
             bool b = true;
             try
@@ -60,8 +60,7 @@ namespace DavidCommon
                     #region 逻辑判断
                     switch (type)
                     {
-                        case 0://同时大于等于宽高
-                            b = width >= widthsize && height >= heightsize ? true : false;
+                        case 0:
                             break;
                         case 1://同时小于等于宽高
                             b = width <= widthsize && height <= heightsize ? true : false;
@@ -74,6 +73,9 @@ namespace DavidCommon
                             break;
                         case 4://小于等于宽，大于等于高
                             b = width <= widthsize && height >= heightsize ? true : false;
+                            break;
+                        case 5://同时大于等于宽高
+                            b = width >= widthsize && height >= heightsize ? true : false;
                             break;
                         default:
                             b = false;
