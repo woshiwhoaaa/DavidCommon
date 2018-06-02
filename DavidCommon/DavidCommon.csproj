@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncDownload.cs" />
     <Compile Include="BaseHttpClient.cs" />
     <Compile Include="ConfigCommom.cs" />
     <Compile Include="CookieCommon.cs" />
@@ -71,12 +73,15 @@
     <Compile Include="DBCommon.cs" />
     <Compile Include="ExcelCommon.cs" />
     <Compile Include="FileCommon.cs" />
+    <Compile Include="ImageCommon.cs" />
     <Compile Include="IPCommon.cs" />
+    <Compile Include="MailCommon.cs" />
     <Compile Include="MysqlDBCommon.cs" />
     <Compile Include="PathCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringCommon.cs" />
     <Compile Include="TxtCommon.cs" />
+    <Compile Include="WebClientCommon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

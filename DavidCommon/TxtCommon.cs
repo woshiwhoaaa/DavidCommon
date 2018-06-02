@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 
 namespace DavidCommon
 {
@@ -10,11 +11,11 @@ namespace DavidCommon
         /// <param name="str"></param>
         /// <param name="filenamepath">存储路径以及.txt</param>
         /// <param name="IsNewline">默认0，换行，其他值不换行</param>
-        public static void AppendToTxt(string str, string filenamepath,int IsNewline=0)
+        public static void AppendToTxt(string str, string filenamepath, int IsNewline = 0)
         {
             try
             {
-                byte[] myByte = System.Text.Encoding.UTF8.GetBytes(str + (IsNewline==0?"\r\n":""));
+                byte[] myByte = System.Text.Encoding.UTF8.GetBytes(str + (IsNewline == 0 ? "\r\n" : ""));
                 using (FileStream fsWrite = new FileStream(filenamepath, FileMode.Append))
                 {
                     fsWrite.Write(myByte, 0, myByte.Length);
@@ -38,6 +39,22 @@ namespace DavidCommon
                 };
             }
             catch { }
+        }
+        /// <summary>
+        /// 读取txt全部内容
+        /// </summary>
+        /// <returns></returns>
+        public static string ReadAllText(string path, Encoding encoding)
+        {
+            if (File.Exists(path))
+            {
+                //存在 
+                return File.ReadAllText(path, encoding);
+            }
+            else
+            {
+                return "";
+            }
         }
 
 
