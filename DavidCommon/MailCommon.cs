@@ -19,8 +19,9 @@ namespace DavidCommon
         /// <param name="Title">标题</param>
         /// <param name="Content">内容</param>
         /// <param name="IsHtml">是否以Html格式发送</param>
+        /// <param name="EnableSsl">是否使用SSL加密连接（有的服务器不支持此链接）</param>
         /// <returns></returns>
-        public static bool SendMailM(string FromAddress, string pwd, string host, string FromDisplayName, string ToAddress, string Title, string Content, bool IsHtml)
+        public static bool SendMailM(string FromAddress, string pwd, string host, string FromDisplayName, string ToAddress, string Title, string Content, bool IsHtml=false,bool EnableSsl=false)
         {
             try
             {
@@ -35,7 +36,7 @@ namespace DavidCommon
                 SmtpClient smtp = new SmtpClient();//允许应用程序使用SMTP发邮件
                 smtp.Credentials = new System.Net.NetworkCredential(FromAddress, pwd);//设置验证发件人的凭据（邮件服务器需要身份验证）
                 smtp.Host = host;//设置用于SMTP事务的主机名或ip地址。例如smtp.163.com
-                //smtp.EnableSsl = true; //是否使用SSL加密连接（有的服务器不支持此链接）
+                smtp.EnableSsl = EnableSsl; //是否使用SSL加密连接（有的服务器不支持此链接）
                 try
                 {
                     smtp.Send(msg);//发信
